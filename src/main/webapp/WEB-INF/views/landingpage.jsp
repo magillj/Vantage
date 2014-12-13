@@ -11,7 +11,18 @@
     </jsp:attribute>
 
     <jsp:body>
-      <h1>Landing Page for Vantage</h1>
-      <p>Test message from controller: ${testMessage}</p>
+        <div style="background-color:#355e3b; height: 200px; width: 100%; border: 7px solid #BD2031;">
+          <img style="height:200px; width: 280px;" alt="Logo" src="http://www.phikappapsi.com/connect/media/images/upload/Main%20logo%20for%20web.gif">
+          <span id="title">Washington Alpha</span>
+      </div>
+      <div id="top-nav">
+          <ul id="main-menu">
+              <li> About </li>
+              <li> Duties </li>
+              <li> Recruitment</li>
+              <li> Scholarship </li>
+          </ul>
+      </div>
+        <p>Test message from controller: ${testMessage}</p>
     </jsp:body>
 </t:genericpage>
