@@ -7,7 +7,7 @@
 
 <t:genericpage>
     <jsp:attribute name="headscripts">
-        <script src="<c:url value="/js/LandingPage.js" />"></script>
+        
     </jsp:attribute>
 
     <jsp:body>
