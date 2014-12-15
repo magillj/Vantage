@@ -11,7 +11,10 @@
 
 <body>
     <div id="banner">
-        <!--TODO: Insert banner code-->
+        <div style="background-color:#355e3b; height: 200px; width: 100%; border: 7px solid #BD2031;">
+            <img style="height:200px; width: 280px;" alt="Logo" src="http://www.phikappapsi.com/connect/media/images/upload/Main%20logo%20for%20web.gif">
+            <span id="title">Washington Alpha</span>
+        </div>
     </div>
 
     <div id="content">
