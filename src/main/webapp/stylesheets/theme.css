@@ -1,4 +1,33 @@
 /* Main CSS file for Vantage views */
-h1 {
-    color: red;
+#background {
+    background-color: #355e3b;
+    height: 200px;
+    width: 98.5%;
+    border: 7px solid #BD2031;
+}
+
+#logo {
+    height:200px;
+    width: 280px;
+}
+
+#title {
+    position: absolute;
+    margin-top: 80px;
+    font-size: 50px;
+    margin-left: 50px;
+}
+
+li {
+    display: inline;
+    margin: 5px;
+    font-size: 30px;
+    border: 2px solid black;
+}
+
+#main-menu {
+    background: lightgrey;
+    border: 2px solid black;
+    margin-top: 0px;
+    width: 95.9%
 }
