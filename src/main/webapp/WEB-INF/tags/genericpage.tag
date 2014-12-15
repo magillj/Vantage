@@ -3,7 +3,7 @@
 <%@attribute name="headscripts" fragment="true" %>
 <html>
 <head>
-    <script src="<c:url value="/scripts/external/jquery-2.1.1.min.js" />"></script>
+    <script src="<c:url value="/js/external/jquery-2.1.1.min.js" />"></script>
     <jsp:invoke fragment="headscripts"/>
 
     <title>Vantage</title>
