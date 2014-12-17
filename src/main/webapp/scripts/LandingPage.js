@@ -1,3 +1,1 @@
-window.onload = function() {
-    alert("I'm working");
-}
+/* Main Javascript page for the Academics section of Vantage */

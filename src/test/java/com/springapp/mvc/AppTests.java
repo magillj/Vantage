@@ -31,9 +31,13 @@ public class AppTests {
     }
 
     @Test
-    public void simple() throws Exception {
+    public void testBaseUrls() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("hello"));
+                .andExpect(view().name("landingpage"));
+
+        mockMvc.perform(get("/academics"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("academicslanding"));
     }
 }
