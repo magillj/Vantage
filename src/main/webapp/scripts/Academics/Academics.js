@@ -1,0 +1,1 @@
+/* Main Javascript page for the Academics section of Vantage */
