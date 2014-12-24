@@ -13,4 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/HM")
 public class HouseManagementController {
 
+    @RequestMapping(method = RequestMethod.GET)
+    public String printWelcome(ModelMap model) {
+        model.addAttribute("testMessage", "This message is from LandingPageController!");
+        return "HM/hmlanding";
+    }
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="memberDAO" class="DAO.impl.JDBCMemberDAO">
+              <property name="dataSource" ref="dataSource" />
+       </bean>
+
+       <bean id="parentDAO" class="DAO.impl.JDBCParentDAO">
+              <property name="dataSource" ref="dataSource" />
+       </bean>
+
+       <bean id="majorDAO" class="DAO.impl.JDBCMajorDAO">
+              <property name="dataSource" ref="dataSource" />
+       </bean>
+
+       <bean id="titleDAO" class="DAO.impl.JDBCTitleDAO">
+              <property name="dataSource" ref="dataSource" />
+       </bean>
+
+</beans>
