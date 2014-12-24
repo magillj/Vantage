@@ -11,14 +11,6 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div id="top-nav">
-            <ul id="main-menu">
-                <li> About </li>
-                <li> Duties </li>
-                <li> Recruitment</li>
-                <li> Scholarship </li>
-            </ul>
-        </div>
         <p>Test message from controller: ${testMessage}</p>
     </jsp:body>
 </t:genericpage>
