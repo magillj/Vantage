@@ -21,7 +21,7 @@
     <mvc:resources mapping="/css/**" location="./stylesheets/" />
     <mvc:resources mapping="/images/**" location="./images/" />
     <mvc:resources mapping="/js/**" location="./scripts/" />
-    <mvc:resources mapping="/bootstrap/**" location="./stylesheets/bootstrap/" />
+    <mvc:resources mapping="/bootstrap/**" location="./bootstrap/" />
     <mvc:annotation-driven />
 
 </beans>
