@@ -2,7 +2,7 @@
 #background {
     background-color: #355e3b;
     height: 200px;
-    width: 98.5%;
+    width: 100%;
     border: 7px solid #BD2031;
 }
 
@@ -23,9 +23,4 @@
     border: 2px solid black;
     margin-top: 0;
     width: 95.9%
-}
-
-.container {
-    margin-left: 50px;
-    margin-right: 50px;
 }
