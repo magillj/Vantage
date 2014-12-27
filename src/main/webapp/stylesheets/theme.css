@@ -1,26 +1,10 @@
 /* Global CSS themes for Vantage */
-#background {
-    background-color: #355e3b;
-    height: 200px;
-    width: 100%;
-    border: 7px solid #BD2031;
-}
 
 #logo {
-    height:200px;
-    width: 280px;
+    width: 70px;
 }
 
-#title {
-    position: absolute;
-    margin-top: 80px;
-    font-size: 50px;
-    margin-left: 50px;
-}
-
-#main-menu {
-    background: lightgrey;
-    border: 2px solid black;
-    margin-top: 0;
-    width: 95.9%
+.navbar-brand {
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
