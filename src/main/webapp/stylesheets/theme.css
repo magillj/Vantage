@@ -8,3 +8,7 @@
     padding-top: 3px;
     padding-bottom: 3px;
 }
+
+.form-signin {
+    width: 25%;
+}

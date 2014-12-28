@@ -2,7 +2,10 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 
-    <import resource="SpringDB/Spring-Datasource.xml" />
+    <import resource="../webapp/WEB-INF/Spring-Datasource.xml" />
     <import resource="SpringDB/Spring-linkDAO.xml" />
+    <import resource="../webapp/WEB-INF/spring-security.xml" />
+    <import resource="../webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
+
 
 </beans>

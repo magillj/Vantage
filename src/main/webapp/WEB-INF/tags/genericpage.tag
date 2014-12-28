@@ -1,5 +1,6 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%--<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>--%>
 <%@attribute name="headscripts" fragment="true" %>
 <html>
 <head>
@@ -18,6 +19,27 @@
 </head>
 
 <body>
+<%--<sec:authorize access="hasRole('ROLE_USER')">--%>
+    <%--<!-- For login user -->--%>
+    <%--<c:url value="/j_spring_security_logout" var="logoutUrl" />--%>
+    <%--<form action="${logoutUrl}" method="post" id="logoutForm">--%>
+        <%--<input type="hidden" name="${_csrf.parameterName}"--%>
+               <%--value="${_csrf.token}" />--%>
+    <%--</form>--%>
+    <%--<script>--%>
+        <%--function formSubmit() {--%>
+            <%--document.getElementById("logoutForm").submit();--%>
+        <%--}--%>
+    <%--</script>--%>
+
+    <%--<c:if test="${pageContext.request.userPrincipal.name != null}">--%>
+        <%--<h2>--%>
+            <%--User : ${pageContext.request.userPrincipal.name} | <a--%>
+                <%--href="javascript:formSubmit()"> Logout</a>--%>
+        <%--</h2>--%>
+    <%--</c:if>--%>
+<%--</sec:authorize>--%>
+
     <!-- Static navbar -->
     <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container-fluid">
@@ -28,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img id="logo" alt="Logo" src="http://www.phikappapsi.com/connect/media/images/upload/Main%20logo%20for%20web.gif"></a>
+                <a class="navbar-brand" href="#"><img id="logo" alt="Logo" src="<c:url value="/images/pkp_logo.png"/>"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

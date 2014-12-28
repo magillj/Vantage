@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @Controller
-@RequestMapping("Login")
 public class AuthorizationController {
 
     @RequestMapping(method = RequestMethod.GET)
     public static String printWelcome(ModelMap model) {
         model.addAttribute("testMessage", "This message is from the Controller!");
         return "authorization/login";
-
     }
 
 

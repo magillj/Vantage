@@ -11,6 +11,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <p>Test message from controller: ${testMessage}</p>
+        <h1> "title" from MainController: ${title}</h1>
+        <p> "message" from MainController: ${message}</p>
     </jsp:body>
 </t:genericpage>
