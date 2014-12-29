@@ -25,8 +25,10 @@ public class Member {
     private String HomeAddress;
     private int ParentID;
     private int MajorID;
+    private String unhashedPass;
     private byte[] PasswordHash;
     private byte[] PasswordSalt;
+    private String MagicPhrase;
 
     public Member(String firstName, String middleName, String lastName, String email, int pc, String initiationNumber, String cellNumber, String highSchool, String homeAddress, int parentID, int majorID, byte[] passwordHash, byte[] passwordSalt) {
         FirstName = firstName;
@@ -46,6 +48,10 @@ public class Member {
 
     public int getMemberID() {
         return MemberID;
+    }
+
+    public void setMemberID(int memberID) {
+        MemberID = memberID;
     }
 
     public String getFirstName() {
@@ -153,17 +159,33 @@ public class Member {
         PasswordSalt = passwordSalt;
     }
 
+    public String getUnhashedPass() {
+        return unhashedPass;
+    }
+
+    public void setUnhashedPass(String unhashedPass) {
+        this.unhashedPass = unhashedPass;
+    }
+
+    public String getMagicPhrase() {
+        return MagicPhrase;
+    }
+
+    public void setMagicPhrase(String magicPhrase) {
+        MagicPhrase = magicPhrase;
+    }
+
     /*
-        @Param: String Password
-        @return: byte[], a hashed value of the Password Argument
+            @Param: String Password
+            @return: byte[], a hashed value of the Password Argument
 
-        Will hash the string passed into it using the SHA-256 Algorithm, returning the byte[] as UTF-8
+            Will hash the string passed into it using the SHA-256 Algorithm, returning the byte[] as UTF-8
 
-        Proper use: Hash the password + salt!!!
-                    * Create the salt with the generateSalt() method. You will also have to store the Salt in the database.
-                    * The password stored in the database will be hashIt(password + salt)
+            Proper use: Hash the password + salt!!!
+                        * Create the salt with the generateSalt() method. You will also have to store the Salt in the database.
+                        * The password stored in the database will be hashIt(password + salt)
 
-     */
+         */
     public static byte[] hashIt(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");

@@ -79,5 +79,58 @@ public class JDBCTitleDAO implements TitleDAO{
         return null; //We will burn in hell if it gets here
     }
 
+    public int lookUpID(String title) {
+        String sql = "SELECT * FROM Title WHERE Title = ?";
+
+        Connection connection = null;
+        int titleID = 0;
+
+        try {
+            connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, title);
+            ResultSet result = ps.executeQuery();
+            titleID = result.getInt("TitleID");
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ignore) {}
+            }
+        }
+        return titleID; //We will burn in hell if it gets here
+    }
+
+    public int lookUpOrInsert(String p_title) {
+        String sql = "SELECT * FROM Title WHERE Title = ?";
+
+        Connection connection = null;
+        int titleID = 0;
+
+        try {
+            connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, p_title);
+            ResultSet result = ps.executeQuery();
+            if (!result.next() ) { //resultSet is empty, so insert
+                Title title = new Title(p_title);
+                insert(title);
+            }
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ignore) {}
+            }
+        }
+        titleID = lookUpID(p_title);
+        return titleID;
+    }
+
+
 
 }

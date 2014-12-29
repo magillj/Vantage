@@ -88,4 +88,31 @@ public class JDBCParentDAO implements ParentDAO {
         return null; //We will burn in hell if it gets here
     }
 
+    // will return 0 if not present
+    public int lookUpIDByEmail(String p_email) {
+        String sql = "SELECT * FROM Parent WHERE ParentEmail = ?";
+
+        Connection connection = null;
+        int parentID = 0;
+        try {
+            connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, p_email);
+            ResultSet result = ps.executeQuery();
+            if (result.next()) {
+                parentID = result.getInt("TitleID");
+                result.close();
+                ps.close();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ignored) {}
+            }
+        }
+        return parentID;
+    }
 }

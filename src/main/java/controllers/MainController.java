@@ -4,15 +4,29 @@ package controllers;
  * Created by btaylor5 on 12/28/14.
  */
 
+import DAO.MajorDAO;
+import DAO.MemberDAO;
+import DAO.ParentDAO;
+import DAO.TitleDAO;
+import DAO.model.Major;
+import DAO.model.Member;
+import DAO.model.Parent;
+import DAO.model.Title;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class MainController {
@@ -45,7 +59,7 @@ public class MainController {
 
         ModelAndView model = new ModelAndView();
         if (error != null) {
-            model.addObject("error", "Invalid username and password!");
+            model.addObject("error", "Invalid username and/or password!");
         }
 
         if (logout != null) {
@@ -74,5 +88,4 @@ public class MainController {
         return model;
 
     }
-
 }

@@ -8,4 +8,6 @@ import DAO.model.Title;
 public interface TitleDAO {
     public void insert(Title title);
     public Title lookUpTitle(int titleID);
+    public int lookUpID(String title);
+    public int lookUpOrInsert(String p_title);
 }

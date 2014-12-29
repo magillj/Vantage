@@ -118,5 +118,32 @@ public class JDBCMemberDAO implements MemberDAO {
         return null; //We will burn in hell if it gets here
     }
 
+    public int lookUpMemberByEmail(String Email) {
+        String sql = "SELECT * FROM Member WHERE Email = ?";
+
+        Connection connection = null;
+        int memberID = 0;
+        try {
+            connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, Email);
+            ResultSet result = ps.executeQuery();
+            if (result.next()) {
+                memberID = result.getInt("MemberID");
+                result.close();
+                ps.close();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ignore) {}
+            }
+        }
+        return memberID; //We will burn in hell if it gets here
+    }
+
 
 }

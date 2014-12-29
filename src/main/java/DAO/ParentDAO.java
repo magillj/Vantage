@@ -8,4 +8,5 @@ import DAO.model.Parent;
 public interface ParentDAO {
     public void insert(Parent parent);
     public Parent lookUpParent(int parentID);
+    public int lookUpIDByEmail(String p_email);
 }

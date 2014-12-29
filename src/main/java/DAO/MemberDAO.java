@@ -10,4 +10,5 @@ import DAO.model.Member;
 public interface MemberDAO {
     public void insert(Member member); //USED to be static..can I remove?
     public Member lookUpMember(int memberID);
+    public int lookUpMemberByEmail(String Email);
 }

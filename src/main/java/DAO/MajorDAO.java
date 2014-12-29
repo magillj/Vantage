@@ -8,4 +8,5 @@ import DAO.model.Major;
 public interface MajorDAO {
     public void insert(Major major);
     public Major lookUpMajor(int majorID);
+    public int lookUpOrInsert(String p_major);
 }

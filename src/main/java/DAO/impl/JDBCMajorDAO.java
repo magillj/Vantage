@@ -78,4 +78,56 @@ public class JDBCMajorDAO implements MajorDAO {
         }
         return null; //We will burn in hell if it gets here
     }
+
+    public int lookUp(String p_major) {
+        String sql = "SELECT * FROM Major WHERE Major = ?";
+
+        Connection connection = null;
+        int majorID = 0;
+        try {
+            connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, p_major);
+            ResultSet result = ps.executeQuery();
+            majorID = result.getInt("MajorID");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ignore) {}
+            }
+        }
+        return majorID;
+    }
+
+
+    public int lookUpOrInsert(String p_major) {
+        String sql = "SELECT * FROM Major WHERE Major = ?";
+
+        Connection connection = null;
+        int majorID = 0;
+        try {
+            connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, p_major);
+            Major major = null;
+            ResultSet result = ps.executeQuery();
+            if (!(result.next())) {
+                major = new Major(p_major);
+                insert(major);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ignore) {}
+            }
+        }
+        majorID = lookUp(p_major);
+        return majorID;
+    }
 }
