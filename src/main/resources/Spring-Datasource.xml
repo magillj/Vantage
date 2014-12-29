@@ -3,7 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
-
     <!-- Source: http://stackoverflow.com/questions/17107310/spring-config-xml-file-with-context-jdbc-tx-schemalocation -->
        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
               <property name="driverClassName" value="com.mysql.jdbc.Driver" />

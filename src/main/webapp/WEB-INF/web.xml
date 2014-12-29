@@ -9,6 +9,7 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
+
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -29,8 +30,9 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/mvc-dispatcher-servlet.xml,
-			/WEB-INF/Spring-Datasource.xml,
-			/WEB-INF/spring-security.xml
+			classpath:Spring-Datasource.xml,
+			classpath:spring-security.xml,
+			classpath:Spring-linkDAO.xml
 		</param-value>
 	</context-param>
 
