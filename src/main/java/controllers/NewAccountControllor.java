@@ -76,12 +76,11 @@ public class NewAccountControllor {
             int majorID = majorDAO.lookUpOrInsert(account.getMajor());
 
 
-            byte[] salt = Member.generateSalt();
-            byte[] password = Member.hashIt(account.getPassword() + salt);
+            String password = Member.hashIt(account.getPassword());
 
 
             Member member = new Member(account.getFirstName(), account.getMiddleName(), account.getLastName(), account.getEmail(),
-                    account.getPC(), account.getInitiationNumber(), account.getCellNumber(), account.getHighSchool(), account.getHomeAddress(), parentID, majorID, password, salt);
+                    account.getPC(), account.getInitiationNumber(), account.getCellNumber(), account.getHighSchool(), account.getHomeAddress(), parentID, majorID, password);
             memberDAO.insert(member);
             
             int memberID = memberDAO.lookUpMemberByEmail(account.getEmail());

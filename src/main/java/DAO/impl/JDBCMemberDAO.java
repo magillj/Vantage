@@ -37,11 +37,10 @@ public class JDBCMemberDAO implements MemberDAO {
                 "HomeAddress, " +
                 "ParentID, " +
                 "MajorID, " +
-                "PasswordHash , " +
-                "PasswordSalt" +
+                "EncodedPassword" +
                 ")" +
                 "VALUES" +
-                "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         Connection connection = null;
 
@@ -59,8 +58,7 @@ public class JDBCMemberDAO implements MemberDAO {
             ps.setString(9, member.getHomeAddress());
             ps.setInt(10, member.getParentID());
             ps.setInt(11, member.getMajorID());
-            ps.setBytes(12, member.getPasswordHash());
-            ps.setBytes(13, member.getPasswordSalt());
+            ps.setString(12, member.getEncodedPassword());
             ps.executeUpdate();
             ps.close();
 
@@ -99,8 +97,7 @@ public class JDBCMemberDAO implements MemberDAO {
                         result.getString("HomeAddress"),
                         result.getInt("ParentID"),
                         result.getInt("MajorID"),
-                        result.getBytes("PasswordHash"),
-                        result.getBytes("PasswordSalt")
+                        result.getString("EncodedPassword")
                 );
                 result.close();
                 ps.close();

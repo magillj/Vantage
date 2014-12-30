@@ -54,20 +54,19 @@
     </c:if>
 
     <h2 class="form-signin-heading">Please sign in</h2>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <%-- TODO: Remember Me Functionality--%>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="btn-danger btn-lg btn-primary btn-block" type="submit">Sign in</button>
-
-    <input type="hidden" name="${_csrf.parameterName}"
-           value="${_csrf.token}" />
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input name="username" type="" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <%-- TODO: Remember Me Functionality--%>
+      <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn-danger btn-lg btn-primary btn-block" name="submit" type="submit">Sign in</button>
+    <%--<input type="hidden" name="${_csrf.parameterName}"--%>
+           <%--value="${_csrf.token}" />--%>
 
   </form>
 

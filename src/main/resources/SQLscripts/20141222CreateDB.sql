@@ -3,6 +3,7 @@
 # [] Emails should be unique for each user
 # [] Add Tables For Scholarship
 # []
+
 CREATE DATABASE IF NOT EXISTS FRATERNITY;
 
 USE FRATERNITY;
@@ -43,8 +44,7 @@ CREATE TABLE IF NOT EXISTS Member (
   HomeAddress VARCHAR(100), /* de-normalized */
   ParentID int REFERENCES Parent (ParentID),
   MajorID INT REFERENCES  Major (MajorID),
-  PasswordHash Binary(32), /* USE SHA-256 */
-  PasswordSalt BINARY(32), /* Assumes that the salt will be 32 bytes... see http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#spring-security-crypto-keygenerators */
+  EncodedPassword CHAR(60),
   PRIMARY KEY (MemberID)
 );
 
@@ -54,6 +54,10 @@ CREATE TABLE IF NOT EXISTS Position (
   HousePoints int,
   PRIMARY KEY (PositionID)
 );
+
+INSERT INTO Position (PositionName) VALUES ("ROLE_USER");
+INSERT INTO Position (PositionName) VALUES ("ROLE_ADMIN");
+
 
 CREATE TABLE IF NOT EXISTS Member_Position (
   MemberPosID int not null AUTO_INCREMENT,

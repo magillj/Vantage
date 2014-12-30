@@ -1,7 +1,8 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@attribute name="headscripts" fragment="true" %>
-<html>
+<%@taglib prefix="sec"
+uri="http://www.springframework.org/security/tags"%><html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,7 +61,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class=""><a href="">Log Out</a></li>
+                    <li class=""><a href="<c:url value="/login?logout" />">Log Out</a></li>
                     <li class=""><a href="">Officer Portal</a></li> <%-- Only Show this if they have a portal --%>
                 </ul>
             </div><!--/.nav-collapse -->

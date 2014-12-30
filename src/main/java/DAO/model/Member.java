@@ -1,5 +1,8 @@
 package DAO.model;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -26,11 +29,10 @@ public class Member {
     private int ParentID;
     private int MajorID;
     private String unhashedPass;
-    private byte[] PasswordHash;
-    private byte[] PasswordSalt;
+    private String EncodedPassword;
     private String MagicPhrase;
 
-    public Member(String firstName, String middleName, String lastName, String email, int pc, String initiationNumber, String cellNumber, String highSchool, String homeAddress, int parentID, int majorID, byte[] passwordHash, byte[] passwordSalt) {
+    public Member(String firstName, String middleName, String lastName, String email, int pc, String initiationNumber, String cellNumber, String highSchool, String homeAddress, int parentID, int majorID, String encodedPassword) {
         FirstName = firstName;
         MiddleName = middleName;
         LastName = lastName;
@@ -42,8 +44,7 @@ public class Member {
         HomeAddress = homeAddress;
         ParentID = parentID;
         MajorID = majorID;
-        PasswordHash = passwordHash;
-        PasswordSalt = passwordSalt;
+        EncodedPassword = encodedPassword;
     }
 
     public int getMemberID() {
@@ -143,20 +144,12 @@ public class Member {
         MajorID = majorID;
     }
 
-    public byte[] getPasswordHash() {
-        return PasswordHash;
+    public String getEncodedPassword() {
+        return EncodedPassword;
     }
 
-    public void setPasswordHash(byte[] passwordHash) {
-        PasswordHash = passwordHash;
-    }
-
-    public byte[] getPasswordSalt() {
-        return PasswordSalt;
-    }
-
-    public void setPasswordSalt(byte[] passwordSalt) {
-        PasswordSalt = passwordSalt;
+    public void setEncodedPassword(String encodedPassword) {
+        EncodedPassword = encodedPassword;
     }
 
     public String getUnhashedPass() {
@@ -176,39 +169,24 @@ public class Member {
     }
 
     /*
-            @Param: String Password
-            @return: byte[], a hashed value of the Password Argument
-
-            Will hash the string passed into it using the SHA-256 Algorithm, returning the byte[] as UTF-8
-
-            Proper use: Hash the password + salt!!!
-                        * Create the salt with the generateSalt() method. You will also have to store the Salt in the database.
-                        * The password stored in the database will be hashIt(password + salt)
-
-         */
-    public static byte[] hashIt(String password) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            try {
-                return digest.digest(password.getBytes("UTF-8"));
-            } catch (UnsupportedEncodingException b) {
-                throw new RuntimeException(b);
-            }
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
+        http://stackoverflow.com/questions/6832445/how-can-bcrypt-have-built-in-salts
+        String should always return as 60 chars
+    */
+    public static String hashIt(String password) {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.encode(password);
     }
 
-    public static byte[] generateSalt() {
-        final Random rand = new SecureRandom();
-        byte[] salt = new byte[32];
-        rand.nextBytes(salt);
-        return salt;
-    }
+//    public static byte[] generateSalt() {
+//        final Random rand = new SecureRandom();
+//        byte[] salt = new byte[32];
+//        rand.nextBytes(salt);
+//        return salt;
+//    }
 
-    // NOTE : I'm confusing myself as to to using objects that represent data in a database...
-    // Code below may not make sense
-    public boolean validateUser(String passwordAttempt) {
-        return (getPasswordHash() == hashIt(passwordAttempt + getPasswordSalt()));
-    }
+//    // NOTE : I'm confusing myself as to to using objects that represent data in a database...
+//    // Code below may not make sense
+//    public boolean validateUser(String passwordAttempt) {
+//        return (getPasswordHash() == hashIt(passwordAttempt + getPasswordSalt()));
+//    }
 }

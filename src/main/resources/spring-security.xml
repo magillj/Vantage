@@ -11,33 +11,37 @@
 
         <!--Add Pages To Be Secured Here-->
         <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/HM**" access="hasRole('ROLE_ADMIN')" />
+        <!--<intercept-url pattern="/HM**" access="hasRole('ROLE_USER')" />-->
 
         <!-- access denied page -->
         <access-denied-handler error-page="/403" />
 
         <form-login
                 login-page="/login"
-                default-target-url="/welcome"
+                default-target-url="/landingpage"
                 authentication-failure-url="/login?error"
-                username-parameter="Email"
-                password-parameter="PasswordHash" />
+                username-parameter="username"
+                password-parameter="password" />
         <logout logout-success-url="/login?logout"  />
         <!-- enable csrf protection -->
-        <csrf/>
+        <!--<csrf/>-->
     </http>
+
+    <beans:bean id='bCryptPasswordEncoder' class='org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder'/>
 
     <!-- Select users and user_roles from database -->
     <authentication-manager>
         <authentication-provider>
-            <password-encoder hash="sha-256">
-                <salt-source user-property="PasswordSalt" />
+            <!--<user-service>-->
+                <!--<user name="btaylor5@uw.edu" password="password" authorities="ROLE_USER, ROLE_ADMIN" />-->
+            <!--</user-service>-->
+            <password-encoder ref="bCryptPasswordEncoder">
             </password-encoder>
             <jdbc-user-service data-source-ref="dataSource"
                                users-by-username-query=
-                                       "select Email, PasswordHash, PasswordSalt from Member where Email=?"
+                                       "select Email as 'username', EncodedPassword as 'password', MemberID from Member where Email=?"
                                authorities-by-username-query=
-                                       "select M.Email, M.MemberID, M.FirstName from Member_Position MP
+                                       "select M.Email, M.MemberID, M.FirstName, P.PositionName as 'RoleName' from Member_Position MP
                                        JOIN Member M ON M.MemberID = MP.MemberID
                                        JOIN Position P ON P.PositionID = MP.PositionID
                                        WHERE M.Email=?  " />
