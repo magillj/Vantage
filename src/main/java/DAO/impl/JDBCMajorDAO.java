@@ -35,7 +35,6 @@ public class JDBCMajorDAO implements MajorDAO {
                 ps.setString(1, major.getMajor());
                 ps.executeUpdate();
                 ps.close();
-
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             } finally {
@@ -89,7 +88,9 @@ public class JDBCMajorDAO implements MajorDAO {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, p_major);
             ResultSet result = ps.executeQuery();
-            majorID = result.getInt("MajorID");
+            if(result.next()) {
+                majorID = result.getInt("MajorID");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

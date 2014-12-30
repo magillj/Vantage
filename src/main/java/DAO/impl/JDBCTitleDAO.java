@@ -36,7 +36,6 @@ public class JDBCTitleDAO implements TitleDAO{
             ps.setString(1, title.getTitle());
             ps.executeUpdate();
             ps.close();
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -90,7 +89,11 @@ public class JDBCTitleDAO implements TitleDAO{
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, title);
             ResultSet result = ps.executeQuery();
-            titleID = result.getInt("TitleID");
+            if(result.next()) {
+                titleID = result.getInt("TitleID");
+            } else {
+                return 0;
+            }
         }catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -100,7 +103,7 @@ public class JDBCTitleDAO implements TitleDAO{
                 } catch (SQLException ignore) {}
             }
         }
-        return titleID; //We will burn in hell if it gets here
+        return titleID;
     }
 
     public int lookUpOrInsert(String p_title) {
