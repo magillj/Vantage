@@ -1,5 +1,8 @@
 /* Note this database will not secure users passwords if it is not running on a site using https. Someone could simply sniff the passwords  */
-
+# TODO ADD CONSTRAINTS:
+# [] Emails should be unique for each user
+# [] Add Tables For Scholarship
+# []
 CREATE DATABASE IF NOT EXISTS FRATERNITY;
 
 USE FRATERNITY;
@@ -40,7 +43,7 @@ CREATE TABLE IF NOT EXISTS Member (
   HomeAddress VARCHAR(100), /* de-normalized */
   ParentID int REFERENCES Parent (ParentID),
   MajorID INT REFERENCES  Major (MajorID),
-  PasswordHash BINARY(255), /* USE SHA-255 */
+  PasswordHash Binary(32), /* USE SHA-256 */
   PasswordSalt BINARY(32), /* Assumes that the salt will be 32 bytes... see http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#spring-security-crypto-keygenerators */
   PRIMARY KEY (MemberID)
 );
