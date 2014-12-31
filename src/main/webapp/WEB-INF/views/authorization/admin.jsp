@@ -5,31 +5,48 @@
   Time: 1:01 PM
   To change this template use File | Settings | File Templates.
 --%>
-
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page session="true"%>
-<html>
-<body>
-<h1>Title : ${title}</h1>
-<h1>Message : ${message}</h1>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<c:url value="/j_spring_security_logout" var="logoutUrl" />
-<form action="${logoutUrl}" method="post" id="logoutForm">
-  <input type="hidden" name="${_csrf.parameterName}"
-         value="${_csrf.token}" />
-</form>
-<script>
-  function formSubmit() {
-    document.getElementById("logoutForm").submit();
-  }
-</script>
+<t:genericpage>
+    <jsp:attribute name="headscripts">
 
-<c:if test="${pageContext.request.userPrincipal.name != null}">
-  <h2>
-    Welcome : ${pageContext.request.userPrincipal.name} | <a
-          href="javascript:formSubmit()"> Logout</a>
-  </h2>
-</c:if>
+    </jsp:attribute>
 
-</body>
-</html>
+  <jsp:body>
+    <%--
+        When configuring the Admin Page Please Note That
+        Sections only show up when a user has a given role.
+
+        To Add Roles...go to spring-security.xml and add another role for
+        <intercept-url pattern="/admin**" access="hasAnyRole('ROLE_ADMIN', ...)" />
+
+        Users cannot reach this page if you don't add their role to the line above
+
+        USE THIS SYTNAX FOR ADDING A SECTION OF BODY:
+        <sec:authorize access="hasRole('ROLE_WHATEVER')">
+
+        </sec:authorize>
+
+        --%>
+    <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+      <p>ADMIN</p>
+    </sec:authorize>
+
+    <sec:authorize access="hasAnyRole('ROLE_HM')">
+      <p>HM</p>
+    </sec:authorize>
+
+    <sec:authorize access="hasAnyRole('ROLE_SCHOLARSHIP')">
+      <p>Scholarship</p>
+    </sec:authorize>
+
+
+    <sec:authorize access="hasAnyRole('ROLE_GP', 'ROLE_VGP')">
+      <p> GP and VGP</p>
+    </sec:authorize>
+
+  </jsp:body>
+</t:genericpage>

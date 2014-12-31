@@ -10,8 +10,8 @@
     <http auto-config="true" use-expressions="true">
 
         <!--Add Pages To Be Secured Here-->
-        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/HM**" access="hasRole('ROLE_PRESIDENT')" />
+        <intercept-url pattern="/admin**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_GP', 'ROLE_VP', 'ROLE_HM', 'ROLE_SCHOLARSHIP', 'ROLE_PHILANTHROPY', 'ROLE_P', 'ROLE_AG', 'ROLE_BG', 'ROLE_HOD', 'ROLE_SOCIAL', 'ROLE_HI', 'ROLE_RISK')" />
+        <intercept-url pattern="/HM**" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="landingpage" access="hasRole('ROLE_USER')" />
 
         <!-- access denied page -->

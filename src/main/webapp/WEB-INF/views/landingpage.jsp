@@ -11,10 +11,7 @@
         
     </jsp:attribute>
 
-
     <jsp:body>
-        <sec:authorize access="hasRole('ROLE_ADMIN')">
-            <p>Test message from controller: ${testMessage}</p>
-        </sec:authorize>
+
     </jsp:body>
 </t:genericpage>
