@@ -58,6 +58,8 @@ public class JDBCParentDAO implements ParentDAO {
     public Parent lookUpParent(int memberID) {
         String sql = "SELECT * FROM Parent WHERE ParentID = ?";
 
+        Parent parent = null;
+
         Connection connection = null;
 
         try {
@@ -66,7 +68,7 @@ public class JDBCParentDAO implements ParentDAO {
             ps.setInt(1, memberID);
             ResultSet result = ps.executeQuery();
             if (result.next()) {
-                Parent parent = new Parent(
+                parent = new Parent(
                         result.getInt("TitleID"),
                         result.getString("ParentFname"),
                         result.getString("ParentLname"),
@@ -74,7 +76,6 @@ public class JDBCParentDAO implements ParentDAO {
                 );
                 result.close();
                 ps.close();
-                return parent;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -85,7 +86,7 @@ public class JDBCParentDAO implements ParentDAO {
                 } catch (SQLException ignored) {}
             }
         }
-        return null; //We will burn in hell if it gets here
+        return parent;
     }
 
     // will return 0 if not present

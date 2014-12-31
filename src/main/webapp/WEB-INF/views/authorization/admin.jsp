@@ -39,14 +39,16 @@
       <p>HM</p>
     </sec:authorize>
 
-    <sec:authorize access="hasAnyRole('ROLE_SCHOLARSHIP')">
-      <p>Scholarship</p>
+    <sec:authorize access="hasAnyRole('root')">
+      <p>root</p>
     </sec:authorize>
 
 
     <sec:authorize access="hasAnyRole('ROLE_GP', 'ROLE_VGP')">
       <p> GP and VGP</p>
     </sec:authorize>
+
+
 
   </jsp:body>
 </t:genericpage>

@@ -1,8 +1,8 @@
 /* Note this database will not secure users passwords if it is not running on a site using https. Someone could simply sniff the passwords  */
-# TODO ADD CONSTRAINTS:
+# TODO:
 # [] Emails should be unique for each user
 # [] Add Tables For Scholarship
-# []
+# [] Add TimeStamp for fines... We need to protect against someone updating a fine amount and screwing up the fines that aren't paid off
 
 CREATE DATABASE IF NOT EXISTS FRATERNITY;
 
@@ -55,9 +55,39 @@ CREATE TABLE IF NOT EXISTS Position (
   PRIMARY KEY (PositionID)
 );
 
-INSERT INTO Position (PositionName) VALUES ("ROLE_USER");
-INSERT INTO Position (PositionName) VALUES ("ROLE_ADMIN");
+# TODO CREATE CONSTRAINT ON Grade <= 4.0
+CREATE TABLE IF NOT EXISTS Grades (
+  GradeID INT NOT NULL AUTO_INCREMENT,
+  MemberID INT NOT NULL REFERENCES Member (MemberID),
+  Quarter VARCHAR(6) NOT NULL,
+  Year INT NOT NULL,
+  Department VARCHAR(6) NOT NULL,
+  CourseNumber CHAR(3) NOT NULL,
+  Credits int NOT NULL,
+  Grade FLOAT(4, 3) NOT NULL
+);
 
+
+
+# INSERT INTO Position (PositionName) VALUES ("USER");
+# INSERT INTO Position (PositionName) VALUES ("ADMIN");
+# INSERT INTO Position (PositionName) VALUES ("GP");
+# INSERT INTO Position (PositionName) VALUES ("VGP");
+# INSERT INTO Position (PositionName) VALUES ("HM");
+# INSERT INTO Position (PositionName) VALUES ("P");
+# INSERT INTO Position (PositionName) VALUES ("SCHOLARSHIP");
+# INSERT INTO Position (PositionName) VALUES ("AG");
+# INSERT INTO Position (PositionName) VALUES ("GB");
+# INSERT INTO Position (PositionName) VALUES ("HOD");
+# INSERT INTO Position (PositionName) VALUES ("HI");
+# INSERT INTO Position (PositionName) VALUES ("RISK");
+# INSERT INTO Position (PositionName) VALUES ("SOCIAL");
+# INSERT INTO Position (PositionName) VALUES ("RUSH");
+# INSERT INTO Position (PositionName) VALUES ("PHILANTHROPY");
+# INSERT INTO Position (PositionName) VALUES ("PHU");
+# INSERT INTO Position (PositionName) VALUES ("SG");
+# /* USE THIS SO WE CAN FIND BUGS WITHOUT ADDING EVERY POSITION (and their house points) TO OUR ACCOUNT */
+# INSERT INTO Position (PositionName) VALUES ("DEVELOPER");
 
 CREATE TABLE IF NOT EXISTS Member_Position (
   MemberPosID int not null AUTO_INCREMENT,
@@ -91,6 +121,11 @@ CREATE TABLE IF NOT EXISTS FeedbackType (
   FeedbackType varchar(20),
   PRIMARY KEY (FeedbackTypeID)
 );
+
+# INSERT INTO FeedbackType VALUES ("None");
+# INSERT INTO FeedbackType VALUES ("Comment");
+# INSERT INTO FeedbackType VALUES ("Vote");
+# INSERT INTO FeedbackType VALUES ("Claim");
 
 CREATE TABLE IF NOT EXISTS Announcement (
   AnnouncementID int not null AUTO_INCREMENT,

@@ -55,6 +55,7 @@ public class NewAccountControllor {
             return model;
         }
 
+//      TODO PULL OUT MAGIC PHRASE INTO AN ADMIN FEATURE SO IT CAN EASILY BE CHANGED AND NOT IN SOURCE CODE
         if (p_model.get("MagicPhrase").equals("P455W()RD_1$_T4K()!&#P3N!$OK4Y")) {
 
             ApplicationContext context =
@@ -75,15 +76,15 @@ public class NewAccountControllor {
 
             int majorID = majorDAO.lookUpOrInsert(account.getMajor());
 
-
             String password = Member.hashIt(account.getPassword());
-
 
             Member member = new Member(account.getFirstName(), account.getMiddleName(), account.getLastName(), account.getEmail(),
                     account.getPC(), account.getInitiationNumber(), account.getCellNumber(), account.getHighSchool(), account.getHomeAddress(), parentID, majorID, password);
             memberDAO.insert(member);
             
             int memberID = memberDAO.lookUpMemberByEmail(account.getEmail());
+
+//            TODO NEED TO GIVE PEOPLE A DEFAULT POSITION OF 'USER'!
 
             if (memberID == 0) {
                 model.addObject("error", "Account Was Not Made. Contact an admin to Help you!");

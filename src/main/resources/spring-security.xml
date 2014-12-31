@@ -10,9 +10,10 @@
     <http auto-config="true" use-expressions="true">
 
         <!--Add Pages To Be Secured Here-->
-        <intercept-url pattern="/admin**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_GP', 'ROLE_VP', 'ROLE_HM', 'ROLE_SCHOLARSHIP', 'ROLE_PHILANTHROPY', 'ROLE_P', 'ROLE_AG', 'ROLE_BG', 'ROLE_HOD', 'ROLE_SOCIAL', 'ROLE_HI', 'ROLE_RISK')" />
-        <intercept-url pattern="/HM**" access="hasRole('ROLE_USER')" />
-        <intercept-url pattern="landingpage" access="hasRole('ROLE_USER')" />
+        <!--If you add any roles, make sure to add them to Database Creation Script with the others-->
+        <intercept-url pattern="/admin**" access="hasAnyRole('DEVELOPER','USER', 'ADMIN', 'GP', 'VGP', 'HM', 'P', 'SCHOLARSHIP', 'AG', 'GB', 'HOD', 'HI', 'RISK', 'SOCIAL', 'RUSH', 'PHILANTHROPY', 'PHU', 'SG')" />
+        <intercept-url pattern="/HM**" access="hasRole('USER')" />
+        <intercept-url pattern="landingpage" access="hasRole('USER')" />
 
         <!-- access denied page -->
         <access-denied-handler error-page="/403" />
@@ -33,9 +34,6 @@
     <!-- Select users and user_roles from database -->
     <authentication-manager>
         <authentication-provider>
-            <!--<user-service>-->
-                <!--<user name="btaylor5@uw.edu" password="password" authorities="ROLE_USER, ROLE_ADMIN" />-->
-            <!--</user-service>-->
             <password-encoder ref="bCryptPasswordEncoder">
             </password-encoder>
             <jdbc-user-service data-source-ref="dataSource"
