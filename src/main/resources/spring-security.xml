@@ -13,14 +13,16 @@
         <!--If you add any roles, make sure to add them to Database Creation Script with the others-->
         <intercept-url pattern="/admin**" access="hasAnyRole('DEVELOPER','USER', 'ADMIN', 'GP', 'VGP', 'HM', 'P', 'SCHOLARSHIP', 'AG', 'GB', 'HOD', 'HI', 'RISK', 'SOCIAL', 'RUSH', 'PHILANTHROPY', 'PHU', 'SG')" />
         <intercept-url pattern="/HM**" access="hasRole('USER')" />
-        <intercept-url pattern="landingpage" access="hasRole('USER')" />
+        <!-- TODO: LOCK DOWN Academics Section -->
+        <!-- TODO: LOCK DOWN Utilities Section -->
+        <intercept-url pattern="/Home" access="hasRole('USER')" />
 
         <!-- access denied page -->
         <access-denied-handler error-page="/403" />
 
         <form-login
                 login-page="/login"
-                default-target-url="/landingpage"
+                default-target-url="/Home"
                 authentication-failure-url="/login?error"
                 username-parameter="username"
                 password-parameter="password" />

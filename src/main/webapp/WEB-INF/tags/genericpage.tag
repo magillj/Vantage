@@ -34,13 +34,13 @@ uri="http://www.springframework.org/security/tags"%><html>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Announcements</a></li>
+                    <li class=""><a href="<c:url value="/Home" />">Announcements</a></li>
                     <li class=dropdown-inverse">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">HM<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Duties</a></li>
-                            <li><a href="#">Fines</a></li>
-                            <li><a href="#">$150 Request</a></li>
+                            <li><a href="<c:url value="/Home/HM/Duties" />">Duties</a></li>
+                            <li><a href="<c:url value="/Home/HM/Fines" />">Fines</a></li>
+                            <li><a href="<c:url value="/Home/HM/150Request" />">$150 Request</a></li>
                         </ul>
                     </li>
                     <li class=dropdown">
@@ -54,7 +54,8 @@ uri="http://www.springframework.org/security/tags"%><html>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utilities <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Menu</a></li>
+                            <li><a href="<c:url value="/Utilities/Menu" />">Menu</a></li>
+                            <li><a href="<c:url value="/Utilities/Directory" />">Directory</a></li>
                             <li><a href="#">Lost and Found</a></li>
                             <li><a href="#">Laundry Room</a></li>
                         </ul>
@@ -68,7 +69,7 @@ uri="http://www.springframework.org/security/tags"%><html>
         </div>
     </nav>
 
-    <div id="content">
+    <div class="container">
         <jsp:doBody/>
     </div>
 

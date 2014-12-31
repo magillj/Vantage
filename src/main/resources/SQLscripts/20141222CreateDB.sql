@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS Grades (
 );
 
 
-
+# /* UNCOMMENT THIS SECTION WHEN RUNNING FOR FIRST TIME */
 # INSERT INTO Position (PositionName) VALUES ("USER");
 # INSERT INTO Position (PositionName) VALUES ("ADMIN");
 # INSERT INTO Position (PositionName) VALUES ("GP");
@@ -122,6 +122,7 @@ CREATE TABLE IF NOT EXISTS FeedbackType (
   PRIMARY KEY (FeedbackTypeID)
 );
 
+# /* UNCOMMENT THIS SECTION WHEN RUNNING FOR FIRST TIME */
 # INSERT INTO FeedbackType VALUES ("None");
 # INSERT INTO FeedbackType VALUES ("Comment");
 # INSERT INTO FeedbackType VALUES ("Vote");
@@ -145,6 +146,31 @@ CREATE TABLE IF NOT EXISTS Feedback (
   MemberID int not null REFERENCES  Member(MemberID),
   Feedback VARCHAR(250),
   PRIMARY KEY (FeedbackID)
+);
+
+CREATE TABLE IF NOT EXISTS Duty (
+  DutyID int not null AUTO_INCREMENT,
+  DutyName varchar(25) NOT NULL,
+  DutyDesc varchar(50),
+  PRIMARY KEY (DutyID)
+);
+
+CREATE TABLE IF NOT EXISTS DutyStatus(
+  DutyStatusID int not null AUTO_INCREMENT,
+  DutyStatus varchar(15) not null,
+  StatusDesc varchar(25),
+  PRIMARY KEY (DutyStatusID)
+);
+
+
+CREATE TABLE IF NOT EXISTS DutyHistory(
+  DutyHistoryID int not null AUTO_INCREMENT,
+  MemberID int not null REFERENCES Member (MemberID),
+  DutyID int not null REFERENCES Duty (DutyID),
+  TimeStamp datetime not null DEFAULT CURRENT_TIMESTAMP,
+  DutyStatusID int not null references DutyStatus (DutyStatusID),
+  CheckedBy int not null references Member (MemberID),
+  PRIMARY KEY (DutyHistoryID)
 );
 
 

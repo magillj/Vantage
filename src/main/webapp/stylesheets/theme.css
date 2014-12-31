@@ -8,3 +8,11 @@
     padding-top: 3px;
     padding-bottom: 3px;
 }
+
+th {
+    text-align: center;
+}
+
+table {
+    font-size: 60%;
+}

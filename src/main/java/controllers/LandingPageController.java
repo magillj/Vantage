@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/landingpage")
+@RequestMapping( value = {"/Home", "/home"})
 public class LandingPageController {
 
     /*
@@ -15,6 +15,6 @@ public class LandingPageController {
     @RequestMapping(method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
         model.addAttribute("testMessage", "This message is from LandingPageController!");
-        return "landingpage";
+        return "/Home/landingpage";
     }
 }

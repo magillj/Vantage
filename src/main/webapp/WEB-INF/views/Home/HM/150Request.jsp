@@ -1,5 +1,9 @@
 <%--
-  Landing page for the Vantage website
+  Created by IntelliJ IDEA.
+  User: btaylor5
+  Date: 12/30/14
+  Time: 11:27 PM
+  To change this template use File | Settings | File Templates.
 --%>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -8,10 +12,10 @@
 
 <t:genericpage>
     <jsp:attribute name="headscripts">
-        
+
     </jsp:attribute>
 
-    <jsp:body>
+  <jsp:body>
 
-    </jsp:body>
+  </jsp:body>
 </t:genericpage>

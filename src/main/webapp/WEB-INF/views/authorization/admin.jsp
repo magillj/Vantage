@@ -36,7 +36,9 @@
     </sec:authorize>
 
     <sec:authorize access="hasAnyRole('ROLE_HM')">
-      <p>HM</p>
+        <t:HMAdmin>
+
+        </t:HMAdmin>
     </sec:authorize>
 
     <sec:authorize access="hasAnyRole('root')">
