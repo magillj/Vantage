@@ -11,7 +11,8 @@
 
         <!--Add Pages To Be Secured Here-->
         <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
-        <!--<intercept-url pattern="/HM**" access="hasRole('ROLE_USER')" />-->
+        <intercept-url pattern="/HM**" access="hasRole('ROLE_PRESIDENT')" />
+        <intercept-url pattern="landingpage" access="hasRole('ROLE_USER')" />
 
         <!-- access denied page -->
         <access-denied-handler error-page="/403" />
@@ -39,9 +40,9 @@
             </password-encoder>
             <jdbc-user-service data-source-ref="dataSource"
                                users-by-username-query=
-                                       "select Email as 'username', EncodedPassword as 'password', MemberID from Member where Email=?"
+                                       "select Email as 'username', EncodedPassword as 'password', MemberID, FirstName from Member where Email=?"
                                authorities-by-username-query=
-                                       "select M.Email, M.MemberID, M.FirstName, P.PositionName as 'RoleName' from Member_Position MP
+                                       "SELECT M.Email,  P.PositionName as 'ROLE', M.MemberID, M.FirstName from Member_Position MP
                                        JOIN Member M ON M.MemberID = MP.MemberID
                                        JOIN Position P ON P.PositionID = MP.PositionID
                                        WHERE M.Email=?  " />

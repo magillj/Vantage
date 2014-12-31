@@ -62,7 +62,7 @@ uri="http://www.springframework.org/security/tags"%><html>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class=""><a href="<c:url value="/login?logout" />">Log Out</a></li>
-                    <li class=""><a href="">Officer Portal</a></li> <%-- Only Show this if they have a portal --%>
+                    <li class=""><a href="<c:url value="/admin" />">Officer Portal</a></li> <%-- Only Show this if they have a portal --%>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
