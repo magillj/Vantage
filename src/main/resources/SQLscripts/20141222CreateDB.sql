@@ -152,6 +152,7 @@ CREATE TABLE IF NOT EXISTS Duty (
   DutyID int not null AUTO_INCREMENT,
   DutyName varchar(25) NOT NULL,
   DutyDesc varchar(50),
+  Active boolean DEFAULT TRUE,
   PRIMARY KEY (DutyID)
 );
 
@@ -167,7 +168,7 @@ CREATE TABLE IF NOT EXISTS DutyHistory(
   DutyHistoryID int not null AUTO_INCREMENT,
   MemberID int not null REFERENCES Member (MemberID),
   DutyID int not null REFERENCES Duty (DutyID),
-  TimeStamp datetime not null DEFAULT CURRENT_TIMESTAMP,
+  TimeStamp TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP,
   DutyStatusID int not null references DutyStatus (DutyStatusID),
   CheckedBy int not null references Member (MemberID),
   PRIMARY KEY (DutyHistoryID)

@@ -12,7 +12,9 @@
 
 <t:genericpage>
     <jsp:attribute name="headscripts">
-
+        <sec:authorize access="hasAnyRole('HM', 'DEVELOPER', 'GP', 'VGP')">
+            <script src="<c:url value="/js/HM/HMAdmin.js" />"></script>
+        </sec:authorize>
     </jsp:attribute>
 
   <jsp:body>
