@@ -1,5 +1,6 @@
 package DAO.impl;
 
+import DAO.FeedbackTypeDAO;
 import DAO.model.FeedbackType;
 
 import javax.sql.DataSource;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by btaylor5 on 12/30/14.
  */
-public class JDBCFeedbackTypeDAO {
+public class JDBCFeedbackTypeDAO  implements FeedbackTypeDAO{
 
     private DataSource dataSource;
 

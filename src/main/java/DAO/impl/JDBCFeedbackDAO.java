@@ -1,5 +1,6 @@
 package DAO.impl;
 
+import DAO.FeedbackDAO;
 import DAO.model.Announcement;
 import DAO.model.Feedback;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by btaylor5 on 12/30/14.
  */
-public class JDBCFeedbackDAO {
+public class JDBCFeedbackDAO implements FeedbackDAO{
     private DataSource dataSource;
 
     public void setDataSource(DataSource dataSource) {

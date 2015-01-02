@@ -1,5 +1,6 @@
 package DAO.impl;
 
+import DAO.DutyDAO;
 import DAO.model.Duty;
 
 import javax.sql.DataSource;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by btaylor5 on 12/31/14.
  */
-public class JDBCDutyDAO {
+public class JDBCDutyDAO implements DutyDAO {
 
     DataSource dataSource;
 
@@ -25,10 +26,11 @@ public class JDBCDutyDAO {
                 "(" +
                 "DutyName, " +
                 "DutyDesc, " +
-                "Active" +
+                "Active," +
+                "FineAmount" +
                 ")" +
                 "VALUES" +
-                "(?, ?, ?)";
+                "(?, ?, ?, ?)";
 
         Connection connection = null;
 
@@ -38,6 +40,7 @@ public class JDBCDutyDAO {
             ps.setString(1, duty.getDutyName());
             ps.setString(2, duty.getDutyDesc());
             ps.setBoolean(3, duty.isActive());
+            ps.setInt(4, duty.getFineAmount());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
@@ -69,7 +72,8 @@ public class JDBCDutyDAO {
                         result.getInt("DutyID"),
                         result.getString("DutyName"),
                         result.getString("DutyDesc"),
-                        result.getBoolean("Active")
+                        result.getBoolean("Active"),
+                        result.getInt("FineAmount")
                 ));
             }
             result.close();
@@ -84,5 +88,9 @@ public class JDBCDutyDAO {
             }
         }
         return dutyResult;
+    }
+
+    public void updateDuty() {
+
     }
 }

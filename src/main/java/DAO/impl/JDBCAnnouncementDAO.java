@@ -1,5 +1,6 @@
 package DAO.impl;
 
+import DAO.AnnouncementDAO;
 import DAO.model.Announcement;
 
 import javax.sql.DataSource;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 /**
  * Created by btaylor5 on 12/30/14.
  */
-public class JDBCAnnouncementDAO  {
+public class JDBCAnnouncementDAO implements AnnouncementDAO {
 
     private DataSource dataSource;
 
