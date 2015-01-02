@@ -67,26 +67,26 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
               </div>
-              <form class="form-horizontal" method="POST" action="<c:url value='/HM/NewDuty' />">
+              <form class="form-horizontal">
               <div class="modal-body">
                   <div class="form-group-sm">
-                    <label for="dutyTitle" class="">Duty Title</label>
-                    <input name="dutyTitle" id="dutyTitle" class="form-control" placeholder="Duty Title" required autofocus>
+                    <label for="DutyName" class="">Duty Title</label>
+                    <input name="DutyName" id="DutyName" class="form-control" placeholder="Duty Title" required autofocus>
                   </div>
                   <div class="form-group-sm">
-                    <label for="dutyDesc" class="">Duty Description</label>
-                    <textarea name="dutyDesc" id="dutyDesc" class="form-control" placeholder="Duty Description..." required ></textarea>
+                    <label for="DutyDesc" class="">Duty Description</label>
+                    <textarea name="DutyDesc" id="DutyDesc" class="form-control" placeholder="Duty Description..." required ></textarea>
                   </div>
                   <div class="form-group-sm">
-                    <label for="dutyClass" class="">Class</label>
-                    <select name="dutyClass" id="dutyClass" class="form-control">
+                    <label for="TargetedClass" class="">Class</label>
+                    <select name="TargetedClass" id="TargetedClass" class="form-control">
                       <option value="Freshman">Freshman</option>
                       <option value="Sophomore">Sophomore</option>
                     </select>
                   </div>
                   <div class="form-group-sm">
-                    <label for="dutyFine" class="">Fine Amount</label>
-                    <select name="dutyFine" id="dutyFine" class="form-control" required>
+                    <label for="FineAmount" class="">Fine Amount</label>
+                    <select name="FineAmount" id="FineAmount" class="form-control" required>
                       <option value="5">5</option>
                       <option value="10">10</option>
                       <option value="15">15</option>
@@ -94,10 +94,17 @@
                       <option value="25">25</option>
                     </select>
                   </div>
+                  <div class="form-group-sm">
+                    <label for="Active" class="">Active</label>
+                    <select id="Active" name="Active" class="form-control" required >
+                      <option value="TRUE"> True </option>
+                      <option value="FALSE"> False </option>
+                    </select>
+                  </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-large btn-default" data-dismiss="modal">Cancel</button>
-                <button name="submit" type="submit" class="btn btn-large btn-primary">Add Duty</button>
+                <button name="submit" type="submit" class="btn btn-large btn-primary submit-new-duty">Add Duty</button>
               </div>
               </form>
             </div>

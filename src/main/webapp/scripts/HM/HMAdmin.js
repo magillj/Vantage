@@ -17,8 +17,25 @@ $(document).ready(function(){
         getDuties();
     });
 
-    $(".new-Duty").click(function() {
-
+    // The Mapping on the left needs to be
+    // representative of what /HM/NewDuty is looking for
+    $(".submit-new-duty").click(function() {
+        $.ajax({
+            url: "/HM/NewDuty",
+            type:'POST',
+            data:
+            {
+                DutyName: $("#DutyName").val(),
+                DutyDesc: $("#DutyDesc").val(),
+                TargetedClass: $("#TargetedClass").val(),
+                FineAmount: $("#FineAmount").val(),
+                Active: $("#Active").val()
+            },
+            success: function(msg)
+            {
+                console.log("Success Sending Ajax For New Duty. Message returned was: " + msg);
+            }
+        });
     });
 
     function getDuties() {
