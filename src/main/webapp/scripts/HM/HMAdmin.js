@@ -17,26 +17,45 @@ $(document).ready(function(){
         getDuties();
     });
 
-    // The Mapping on the left needs to be
-    // representative of what /HM/NewDuty is looking for
+    //Focuses Cursor to start type Duty Title
+    $('#NewDutyModal').on('shown.bs.modal', function () {
+        $('#DutyName').focus();
+    });
+
+    //Submits the New Duty Item
     $(".submit-new-duty").click(function() {
+        submitDuty();
+    });
+
+    function submitDuty() {
+        var dutyName = $("#DutyName").val();
+        var dutyDesc = $("#DutyDesc").val();
+        var targetClass = $("#TargetedClass").val();
+        var fineAmount = $("#FineAmount").val();
+        var active = $("#Active").val();
+
+        // The Mapping on the left needs to be
+        // representative of what /HM/NewDuty is looking for
         $.ajax({
+            type:"POST",
             url: "/HM/NewDuty",
-            type:'POST',
             data:
             {
-                DutyName: $("#DutyName").val(),
-                DutyDesc: $("#DutyDesc").val(),
-                TargetedClass: $("#TargetedClass").val(),
-                FineAmount: $("#FineAmount").val(),
-                Active: $("#Active").val()
+                DutyName: dutyName,
+                DutyDesc: dutyDesc,
+                TargetedClass: targetClass,
+                FineAmount: fineAmount,
+                Active: active
             },
-            success: function(msg)
-            {
+            success: function(msg) {
                 console.log("Success Sending Ajax For New Duty. Message returned was: " + msg);
             }
         });
-    });
+
+        //addToDutyTable(dutyName, dutyDesc, targetClass, fineAmount, active);
+
+        $(".cancel-new-duty").click(); //To close modal and clear data
+    }
 
     function getDuties() {
         $.ajax({

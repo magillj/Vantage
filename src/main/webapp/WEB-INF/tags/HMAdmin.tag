@@ -57,7 +57,7 @@
           </tr>
           </tbody>
         </table>
-        <button class="btn btn-default btn center-block new-Duty" data-toggle="modal" data-target="#NewDutyModal"><span class="glyphicon glyphicon-plus"></span></button>
+        <button class="btn btn-default btn center-block new-duty" data-toggle="modal" data-target="#NewDutyModal"><span class="glyphicon glyphicon-plus"></span></button>
         <%--MODAL FOR NEW DUTY--%>
         <!-- Modal -->
         <div class="modal fade" id="NewDutyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -103,8 +103,8 @@
                   </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-large btn-default" data-dismiss="modal">Cancel</button>
-                <button name="submit" type="submit" class="btn btn-large btn-primary submit-new-duty">Add Duty</button>
+                <button type="button" class="btn btn-large btn-default cancel-new-duty" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-large btn-primary submit-new-duty">Add Duty</button>
               </div>
               </form>
             </div>

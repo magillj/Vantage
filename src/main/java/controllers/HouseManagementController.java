@@ -48,7 +48,6 @@ public class HouseManagementController {
 
         ApplicationContext context =
                 new ClassPathXmlApplicationContext("Spring-Module.xml");
-
         DutyDAO dutyDAO = (DutyDAO) context.getBean("dutyDAO");
 
         ArrayList<Duty> dutyList = dutyDAO.getActiveDuties();
@@ -59,7 +58,7 @@ public class HouseManagementController {
     }
 
     @RequestMapping(value= {"/NewDuty"}, method = RequestMethod.POST)
-    public void newDuty(@ModelAttribute("NewDuty") NewDuty newDuty, BindingResult result, ModelMap p_model) {
+    public @ResponseBody String newDuty(@ModelAttribute("NewDuty") NewDuty newDuty, BindingResult result, ModelMap p_model) {
 
         p_model.addAttribute("DutyID", newDuty.getDutyID());
         p_model.addAttribute("DutyName", newDuty.getDutyName());
@@ -69,6 +68,7 @@ public class HouseManagementController {
         p_model.addAttribute("TargetedClass", newDuty.getTargetedClass());
 
 
+        System.out.println("From newDuty()");
         if (result.hasErrors()) {
             System.out.println("BindingResult had errors in newDuty()");
         }
@@ -81,7 +81,7 @@ public class HouseManagementController {
         Duty insertion = new Duty(newDuty.getDutyName(), newDuty.getDutyDesc(), newDuty.isActive(), newDuty.getFineAmount(), newDuty.getTargetedClass());
 
         dutyDAO.insert(insertion);
-
+        return "Success";
     }
 
     @RequestMapping(value= {"/EditDuty"}, method = RequestMethod.POST)
