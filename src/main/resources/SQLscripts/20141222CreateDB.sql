@@ -148,12 +148,14 @@ CREATE TABLE IF NOT EXISTS Feedback (
   PRIMARY KEY (FeedbackID)
 );
 
+# TODO CONSTRAINT ON UNIQUE TITLE
 CREATE TABLE IF NOT EXISTS Duty (
   DutyID int not null AUTO_INCREMENT,
   DutyName varchar(25) NOT NULL,
-  DutyDesc varchar(50),
+  DutyDesc varchar(300),
   Active boolean DEFAULT TRUE,
   FineAmount int not null,
+  TargetedClass varchar(10) DEFAULT 'Freshman',
   PRIMARY KEY (DutyID)
 );
 
