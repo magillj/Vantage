@@ -1,5 +1,8 @@
 package DAO.model;
 
+import jdk.nashorn.internal.objects.annotations.Constructor;
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * Created by btaylor5 on 12/31/14.
  */
@@ -10,13 +13,23 @@ public class Duty {
     private String dutyDesc;
     private boolean active;
     private int fineAmount;
+    private String targetedClass;
 
-    public Duty(int dutyID, String dutyName, String dutyDesc, Boolean active, int fineAmount) {
+    public Duty(String dutyName, String dutyDesc, Boolean active, int fineAmount, String targetedClass) {
+        this.dutyName = dutyName;
+        this.dutyDesc = dutyDesc;
+        this.active = active;
+        this.fineAmount = fineAmount;
+        this.targetedClass = targetedClass;
+    }
+
+    public Duty(int dutyID, String dutyName, String dutyDesc, Boolean active, int fineAmount, String targetedClass) {
         this.dutyID = dutyID;
         this.dutyName = dutyName;
         this.dutyDesc = dutyDesc;
         this.active = active;
         this.fineAmount = fineAmount;
+        this.targetedClass = targetedClass;
     }
 
     public int getDutyID() {
@@ -54,8 +67,15 @@ public class Duty {
     public int getFineAmount() {
         return fineAmount;
     }
-
     public void setFineAmount(int fineAmount) {
         this.fineAmount = fineAmount;
+    }
+
+    public String getTargetedClass() {
+        return targetedClass;
+    }
+
+    public void setTargetedClass(String targetedClass) {
+        this.targetedClass = targetedClass;
     }
 }

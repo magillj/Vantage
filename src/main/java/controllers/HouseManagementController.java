@@ -8,8 +8,10 @@ import DAO.AnnouncementDAO;
 import DAO.DutyDAO;
 import DAO.model.Announcement;
 import DAO.model.Duty;
+import DAO.model.NewDuty;
 import com.google.gson.Gson;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,7 +23,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
-
 
 @Controller
 @RequestMapping(value = {"/HM", "Home/HM", "Home/hm" })
@@ -58,11 +59,14 @@ public class HouseManagementController {
     }
 
     @RequestMapping(value= {"/NewDuty"}, method = RequestMethod.POST)
-    public void newDuty(@ModelAttribute("Duty") Duty duty, BindingResult result, ModelMap p_model) {
-        p_model.addAttribute("DutyName", duty.getDutyName());
-        p_model.addAttribute("DutyDescription", duty.getDutyDesc());
-        p_model.addAttribute("Active", duty.isActive());
-        p_model.addAttribute("FineAmount", duty.getFineAmount());
+    public void newDuty(@ModelAttribute("NewDuty") NewDuty newDuty, BindingResult result, ModelMap p_model) {
+
+        p_model.addAttribute("DutyID", newDuty.getDutyID());
+        p_model.addAttribute("DutyName", newDuty.getDutyName());
+        p_model.addAttribute("DutyDescription", newDuty.getDutyDesc());
+        p_model.addAttribute("Active", newDuty.isActive());
+        p_model.addAttribute("FineAmount", newDuty.getFineAmount());
+        p_model.addAttribute("TargetedClass", newDuty.getTargetedClass());
 
 
         if (result.hasErrors()) {
@@ -74,7 +78,9 @@ public class HouseManagementController {
 
         DutyDAO dutyDAO = (DutyDAO) context.getBean("dutyDAO");
 
-        dutyDAO.insert(duty);
+        Duty insertion = new Duty(newDuty.getDutyName(), newDuty.getDutyDesc(), newDuty.isActive(), newDuty.getFineAmount(), newDuty.getTargetedClass());
+
+        dutyDAO.insert(insertion);
 
     }
 

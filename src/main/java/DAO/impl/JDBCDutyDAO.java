@@ -27,10 +27,11 @@ public class JDBCDutyDAO implements DutyDAO {
                 "DutyName, " +
                 "DutyDesc, " +
                 "Active," +
-                "FineAmount" +
+                "FineAmount," +
+                "TargetedClass" +
                 ")" +
                 "VALUES" +
-                "(?, ?, ?, ?)";
+                "(?, ?, ?, ?, ?)";
 
         Connection connection = null;
 
@@ -41,6 +42,7 @@ public class JDBCDutyDAO implements DutyDAO {
             ps.setString(2, duty.getDutyDesc());
             ps.setBoolean(3, duty.isActive());
             ps.setInt(4, duty.getFineAmount());
+            ps.setString(5, duty.getTargetedClass());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
@@ -73,7 +75,8 @@ public class JDBCDutyDAO implements DutyDAO {
                         result.getString("DutyName"),
                         result.getString("DutyDesc"),
                         result.getBoolean("Active"),
-                        result.getInt("FineAmount")
+                        result.getInt("FineAmount"),
+                        result.getString("TargetedClass")
                 ));
             }
             result.close();
