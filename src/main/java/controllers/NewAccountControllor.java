@@ -87,7 +87,7 @@ public class NewAccountControllor {
 //            TODO NEED TO GIVE PEOPLE A DEFAULT POSITION OF 'USER'!
 
             if (memberID == 0) {
-                model.addObject("error", "Account Was Not Made. Contact an admin to Help you!");
+                model.addObject("error", "Account Was Not Made. Contact an admin to Help You!");
 
             }
         } else {
