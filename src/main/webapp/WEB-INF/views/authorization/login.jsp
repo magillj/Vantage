@@ -55,7 +55,7 @@
 
     <h2 class="form-signin-heading">Please sign in</h2>
       <label for="inputEmail" class="sr-only">Email address</label>
-      <input name="username" type="" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input name="username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <%-- TODO: Remember Me Functionality--%>
       <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
