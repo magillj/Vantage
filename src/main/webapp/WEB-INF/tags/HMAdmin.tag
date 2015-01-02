@@ -7,6 +7,8 @@
   This HTML will be injected into the admin page for the HM's
 
 --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div class="page-header">
     <h2>House Manager Utilities</h2>
 </div>
@@ -26,14 +28,11 @@
               Duty Name
             </th>
             <th>
-              Duty Description
+              Class
             </th>
-            <%--<th>--%>
-              <%--Class--%>
-            <%--</th>--%>
-            <%--<th>--%>
-              <%--Fine Amount--%>
-            <%--</th>--%>
+            <th>
+              Fine Amount
+            </th>
             <th>
               Edit
             </th>
@@ -45,8 +44,10 @@
               Fridge
             </td>
             <td>
-              Clean out the Fridge (including old food), wipe down the microwave Clean out the Fridge (including old food), wipe down the microwave  Clean out the Fridge (including old food), wipe down the microwave
-
+              Freshmen
+            </td>
+            <td>
+              $5
             </td>
             <td>
               <button class="btn btn-default btn edit-duty"><span class="glyphicon glyphicon-wrench"></span></button>
@@ -56,7 +57,53 @@
           </tr>
           </tbody>
         </table>
-        <button class="btn btn-default btn center-block new-Duty"><span class="glyphicon glyphicon-plus"></span></button>
+        <button class="btn btn-default btn center-block new-Duty" data-toggle="modal" data-target="#NewDutyModal"><span class="glyphicon glyphicon-plus"></span></button>
+        <%--MODAL FOR NEW DUTY--%>
+        <!-- Modal -->
+        <div class="modal fade" id="NewDutyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <form class="form-horizontal" method="POST" action="<c:url value='/HM/NewDuty' />">
+              <div class="modal-body">
+                  <div class="form-group-sm">
+                    <label for="dutyTitle" class="">Duty Title</label>
+                    <input name="dutyTitle" id="dutyTitle" class="form-control" placeholder="Duty Title" required autofocus>
+                  </div>
+                  <div class="form-group-sm">
+                    <label for="dutyDesc" class="">Duty Description</label>
+                    <textarea name="dutyDesc" id="dutyDesc" class="form-control" placeholder="Duty Description..." required ></textarea>
+                  </div>
+                  <div class="form-group-sm">
+                    <label for="dutyClass" class="">Class</label>
+                    <select name="dutyClass" id="dutyClass" class="form-control">
+                      <option value="Freshman">Freshman</option>
+                      <option value="Sophomore">Sophomore</option>
+                    </select>
+                  </div>
+                  <div class="form-group-sm">
+                    <label for="dutyFine" class="">Fine Amount</label>
+                    <select name="dutyFine" id="dutyFine" class="form-control" required>
+                      <option value="5">5</option>
+                      <option value="10">10</option>
+                      <option value="15">15</option>
+                      <option value="20">20</option>
+                      <option value="25">25</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-large btn-default" data-dismiss="modal">Cancel</button>
+                <button name="submit" type="submit" class="btn btn-large btn-primary">Add Duty</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>

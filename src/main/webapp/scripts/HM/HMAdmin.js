@@ -17,6 +17,10 @@ $(document).ready(function(){
         getDuties();
     });
 
+    $(".new-Duty").click(function() {
+
+    });
+
     function getDuties() {
         $.ajax({
             type: "POST",

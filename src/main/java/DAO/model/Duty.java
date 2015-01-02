@@ -9,12 +9,14 @@ public class Duty {
     private String dutyName;
     private String dutyDesc;
     private boolean active;
+    private int fineAmount;
 
-    public Duty(int dutyID, String dutyName, String dutyDesc, Boolean active) {
+    public Duty(int dutyID, String dutyName, String dutyDesc, Boolean active, int fineAmount) {
         this.dutyID = dutyID;
         this.dutyName = dutyName;
         this.dutyDesc = dutyDesc;
         this.active = active;
+        this.fineAmount = fineAmount;
     }
 
     public int getDutyID() {
@@ -47,5 +49,13 @@ public class Duty {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public int getFineAmount() {
+        return fineAmount;
+    }
+
+    public void setFineAmount(int fineAmount) {
+        this.fineAmount = fineAmount;
     }
 }
