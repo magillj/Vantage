@@ -153,6 +153,7 @@ CREATE TABLE IF NOT EXISTS Duty (
   DutyName varchar(25) NOT NULL,
   DutyDesc varchar(50),
   Active boolean DEFAULT TRUE,
+  FineAmount int not null,
   PRIMARY KEY (DutyID)
 );
 
