@@ -13,6 +13,7 @@ th, td {
     text-align: center;
 }
 
+/*Optimum size for viewing on both desktop and mobile( at least on narrow tables like the "Edit Duty" Table )*/
 table {
     font-size: 83%;
 }
