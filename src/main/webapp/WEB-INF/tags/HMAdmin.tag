@@ -21,7 +21,7 @@
     </a>
     <div id="collapse1" class="accordion-body collapse panel-footer">
       <div class="accordion-inner">
-        <table class="table">
+        <table class="table duty-table">
           <thead>
           <tr>
             <th>
@@ -52,8 +52,6 @@
             <td>
               <button class="btn btn-default btn edit-duty"><span class="glyphicon glyphicon-wrench"></span></button>
             </td>
-          </tr>
-          <tr class=".target">
           </tr>
           </tbody>
         </table>

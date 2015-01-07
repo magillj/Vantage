@@ -12,7 +12,7 @@ uri="http://www.springframework.org/security/tags"%><html>
     <link href="<c:url value="/bootstrap/dist/css/bootstrap.min.css" />" rel="stylesheet" type="text/css" />
     <link href="<c:url value="/bootstrap/dist/css/bootstrap-theme.min.css" />" rel="stylesheet" type="text/css" />
     <script src="<c:url value="/bootstrap/dist/js/bootstrap.min.js" />"></script>
-    <link href="/css/theme.css" rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/theme.css" />" rel="stylesheet" type="text/css" />
     <link rel="icon" href="<c:url value="/images/pkp_favicon.ico" />" />
     <jsp:invoke fragment="headscripts"/>
     <title>Vantage</title>

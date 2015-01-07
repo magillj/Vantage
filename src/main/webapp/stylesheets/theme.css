@@ -9,12 +9,12 @@
     padding-bottom: 3px;
 }
 
-th {
+th, td {
     text-align: center;
 }
 
 table {
-    font-size: 75%;
+    font-size: 83%;
 }
 
 .cardinal-red {
