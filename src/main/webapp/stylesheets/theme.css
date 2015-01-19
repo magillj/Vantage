@@ -30,3 +30,9 @@ table {
 .whitesmoke:visited {
     color: #f5f5f5;
 }
+
+#dutyInfo > div > h4 {
+    color: black;
+    font-weight: bold;
+    font-size: 110%;
+}

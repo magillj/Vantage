@@ -33,37 +33,20 @@
             <th>
               Fine Amount
             </th>
-            <th>
-              Edit
-            </th>
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>
-              Fridge
-            </td>
-            <td>
-              Freshmen
-            </td>
-            <td>
-              $5
-            </td>
-            <td>
-              <button class="btn btn-default btn edit-duty"><span class="glyphicon glyphicon-wrench"></span></button>
-            </td>
-          </tr>
           </tbody>
         </table>
         <button class="btn btn-default btn center-block new-duty" data-toggle="modal" data-target="#NewDutyModal"><span class="glyphicon glyphicon-plus"></span></button>
         <%--MODAL FOR NEW DUTY--%>
         <!-- Modal -->
-        <div class="modal fade" id="NewDutyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="NewDutyModal" tabindex="-1" role="dialog" aria-labelledby="newDuty" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h3 class="modal-title" id="newDuty"></h3>
               </div>
               <form class="form-horizontal">
               <div class="modal-body">
@@ -105,6 +88,25 @@
                 <button type="button" class="btn btn-large btn-primary submit-new-duty">Add Duty</button>
               </div>
               </form>
+            </div>
+          </div>
+        </div>
+        <%--MODAL FOR SHOW DUTY / EDIT DUTY--%>
+        <!-- Modal -->
+        <div class="modal fade" id="ShowDutyModal" tabindex="-1" role="dialog" aria-labelledby="showDuty" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="showDuty"></h3>
+              </div>
+              <div class="modal-body" id="dutyInfo">
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Edit</button>
+              </div>
             </div>
           </div>
         </div>
